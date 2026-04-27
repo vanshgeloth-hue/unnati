@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vansh ❤️ Unnati - I'm Sorry</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        /* Animated hearts background */
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .heart {
+            position: absolute;
+            color: #ff6b9d;
+            font-size: 20px;
+            animation: float 6s infinite linear;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .header {
+            margin-bottom: 40px;
+        }
+        .names {
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ff6b9d, #c44569, #ff6b9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 10px #ff6b9d); }
+            to { filter: drop-shadow(0 0 20px #ff6b9d); }
+        }
+        .heart-icon {
+            font-size: 6rem;
+            color: #ff6b9d;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            margin: 20px 0;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.3); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.3); }
+            70% { transform: scale(1); }
+        }
+        .sorry-text {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        .message {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin: 40px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            animation: slideIn 1s ease-out 0.5s both;
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .message h2 {
+            color: #ff6b9d;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .message p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .promise {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+        }
+        .buttons {
+            margin-top: 40px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            margin: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-forgive {
+            background: linear-gradient(45deg, #ff6b9d, #c44569);
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
+        }
+        .btn-forgive:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.6);
+        }
+        .btn-call {
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            color: white;
+            box-shadow: 0 10px 30px rgba(78, 205, 196, 0.4);
+        }
+        .btn-call:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(78, 205, 196, 0.6);
+        }
+        .music-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 107, 157, 0.9);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        .music-btn:hover {
+            transform: scale(1.1);
+            background: rgba(255, 107, 157, 1);
+        }
+        .music-btn.playing {
+            background: rgba(78, 205, 196, 0.9);
+        }
+        @media (max-width: 768px) {
+            .names { font-size: 2.5rem; }
+            .sorry-text { font-size: 2rem; }
+            .heart-icon { font-size: 4rem; }
+            .message { padding: 25px; margin: 20px 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+    <div class="container">
+        <div class="header">
+            <h1 class="names">Vansh ❤️ Unnati</h1>
+            <div class="heart-icon">💖</div>
+            <h2 class="sorry-text">I'm Really Sorry, Meri Jaan! 😔</h2>
+        </div>
+        <div class="message">
+            <h2>Hey Unnati, meri jaan ❤️</h2>
+            <p>Mujhe pata hai maine tujhe hurt kiya hai, aur main sach mein bahut sorry hu. Tu meri zindagi ka sabse important insaan hai. Tere bina main kuch bhi nahi.</p>
+            <p>Main promise karta hu ki aage se kabhi tujhe upset nahi karunga. Tu meri sab kuch hai - meri happiness, meri smile, mera everything! 💕</p>
+            <div class="promise">
+                💝 <strong>Promise: Hamesha tera khayal rakhunga! Tujhe kabhi hurt nahi karunga! 💝</strong>
+            </div>
+            <p>Please forgive me, baby? Main tujhse bahut pyar karta hu! 🥺</p>
+        </div>
+        <div class="buttons">
+            <a href="tel:+91YOUR-NUMBER" class="btn btn-call">📞 Call Me Now</a>
+            <button class="btn btn-forgive" onclick="forgive()">💕 I Forgive You, Vansh!</button>
+        </div>
+    </div>
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
+    </audio>
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '💖';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            document.getElementById('hearts').appendChild(heart);
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+        setInterval(createHeart, 300);
+        function forgive() {
+            confettiEffect();
+            document.querySelector('.sorry-text').innerHTML = 'YAY! Thank You Baby! 😍💕';
+            document.querySelector('.btn-forgive').innerHTML = '🥰 Love You Forever!';
+            document.querySelector('.btn-forgive').style.background = 'linear-gradient(45deg, #4ecdc4, #44a08d)';
+        }
+        function confettiEffect() {
+            for(let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-10px';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.background = ['#ff6b9d', '#4ecdc4', '#ffe66d', '#ff9a9e'][Math.floor(Math.random() * 4)];
+                confetti.style.borderRadius = '50%';
+                confetti.style.pointerEvents = 'none';
+                confetti.style.zIndex = '1000';
+                confetti.style.animation = 'float 3s linear forwards';
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        }
+        let isPlaying = false;
+        function toggleMusic() {
+            const music = document.getElementById('bgMusic');
+            const btn = document.getElementById('musicBtn');
+            if (isPlaying) {
+                music.pause();
+                btn.textContent = '🎵';
+                btn.classList.remove('playing');
+                isPlaying = false;
+            } else {
+                music.play().catch(e => console.log('Autoplay blocked'));
+                btn.textContent = '⏸️';
+                btn.classList.add('playing');
+                isPlaying = true;
+            }
+        }
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+                10% { opacity: 1; }
+                90% { opacity: 1; }
+                100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
